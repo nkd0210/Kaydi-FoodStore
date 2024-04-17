@@ -6,18 +6,23 @@ import Cart from './pages/Cart';
 import PlaceOrder from './pages/PlaceOrder';
 import { Route, Routes } from 'react-router-dom'
 import Footer from './components/Footer';
+import Login from './pages/Login';
 
 
 const App = () => {
+  const [showLogin, setShowLogin] = useState(false);
 
   return (
     <Wrapper>
+      {/* {showLogin ? <Login/> :<></>} */}
       <div className="app">
-        <Navbar />
+        <Navbar setShowLogin={setShowLogin} />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/order' element={<PlaceOrder />} />
+          <Route path='/signin' element={<Login setShowLogin={setShowLogin} />}/>
+
         </Routes>
       </div>
       <Footer />

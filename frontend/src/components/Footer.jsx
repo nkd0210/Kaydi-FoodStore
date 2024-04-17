@@ -51,7 +51,7 @@ const Footer = () => {
 const Wrapper = styled.section`
   .footer {
     color: #d9d9d9;
-    background-color: #8c888c;
+    background-color: #333841;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,9 +61,11 @@ const Wrapper = styled.section`
     margin-top: 100px;
   }
   .logo-title {
-    font-size: 1.6rem;
     font-weight: bold;
-    color: #333;
+    font-size: 1.6rem;
+    background: linear-gradient(45deg, #ff8a00, #e52e71);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .footer-content {
@@ -92,11 +94,11 @@ const Wrapper = styled.section`
   .footer-content-right li:hover,
   .footer-content-center li:hover {
     cursor: pointer;
-    color: #333;
+    color: #777;
   }
   .footer-content-right h2,
   .footer-content-center h2 {
-    color: #333;
+    color: #fff;
   }
 
   .footer-social-icons img {

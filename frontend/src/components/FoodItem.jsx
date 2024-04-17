@@ -39,8 +39,8 @@ const FoodItem = ({ id, name, price, description, image }) => {
 
         <div className="food-item-info">
           <div className="food-item-name-rating">
-            <p>{name}</p>
-            <img src={assets.stars} className="stars" alt="" />
+            <p className="food-name">{name}</p>
+            <img src={assets.rating_starts} className="stars" alt="" />
           </div>
           <p className="food-item-desc">{description}</p>
           <p className="food-item-price">${price}</p>
@@ -58,6 +58,7 @@ const Wrapper = styled.section`
     box-shadow: 0px 0px 10px #555;
     transition: 0.3s;
     animation: fadeIn 1s;
+    background-color: #333841;
   }
 
   .food-item:hover {
@@ -72,7 +73,9 @@ const Wrapper = styled.section`
   .food-item-info {
     padding: 20px;
   }
-
+  .food-name {
+    color: #8A2BE2;
+  }
   .food-item-name-rating {
     display: flex;
     justify-content: space-between;
@@ -91,7 +94,7 @@ const Wrapper = styled.section`
 
   .food-item-desc {
     color: #676767;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .food-item-price {

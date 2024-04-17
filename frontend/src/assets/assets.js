@@ -1,6 +1,7 @@
 import basket_icon from './basket_icon.png'
 import logo from './logo.png'
 import logo1 from './logo1.jpg'
+import logo2 from './logo2.png'
 import logo3 from './logo3.png'
 import header_img from './header_img.png'
 import search_icon from './search_icon.png'
@@ -66,6 +67,7 @@ import stars from './stars.avif'
 export const assets = {
     logo,
     logo1,
+    logo2,
     logo3,
     stars,
     basket_icon,

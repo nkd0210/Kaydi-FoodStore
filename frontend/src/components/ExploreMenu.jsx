@@ -46,7 +46,7 @@ const Wrapper = styled.section`
     background-color: #8c888c;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0px 0px 10px #555;
+    box-shadow: 0px 0px 10px #888;
 
   }
 
@@ -59,6 +59,7 @@ const Wrapper = styled.section`
 
   .explore-menu-text {
     color: #333;
+    gap: 20px;
     max-width: 60%;
     columns: #808;
   }
@@ -92,7 +93,7 @@ const Wrapper = styled.section`
   .explore-menu-list-item p {
     margin-top: 10px;
     margin-bottom: 10px;
-    color: #fff;
+    color: #444;
     font-size: max(1.4vw, 16px);
     cursor: pointer;
   }
