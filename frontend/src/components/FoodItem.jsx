@@ -93,7 +93,7 @@ const Wrapper = styled.section`
   }
 
   .food-item-desc {
-    color: #676767;
+    color: #888;
     font-size: 14px;
   }
 

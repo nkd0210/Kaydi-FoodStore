@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Header = () => {
   return (
     <Wrapper>
-      <div className="header">
+      <div className="header" id="header">
         <div className="header-contents">
           <button>View Menu</button>
         </div>

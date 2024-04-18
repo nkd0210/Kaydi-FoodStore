@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import { StoreContext } from "../context/StoreContext";
 
 const Navbar = ({setShowLogin}) => {
   const [menu, setMenu] = useState("home");
@@ -13,41 +14,53 @@ const Navbar = ({setShowLogin}) => {
     setShowLogin(true);
   }
 
+  const {getTotalCartAmount, getTotalCart} = useContext(StoreContext);
+  // console.log(getTotalCart());
   return (
     <Wrapper>
       <div className="navbar">
-        <div className="logo">Kaydi FoodStore</div>
+        <Link to='/'>
+          <div className="logo">Kaydi FoodStore</div>
+       </Link>
         <ul className="navbar-menu">
           <Link to='/'
             onClick={() => setMenu("home")}
             className={menu === "home" ? "active" : ""}
           >
-            Home
+            <li>Home</li>
           </Link>
           <a href="#explore-menu"
             onClick={() => setMenu("menu")}
             className={menu === "menu" ? "active" : ""}
           >
-            Menu
+            <li>Menu</li>
           </a>
           <a href="#app-download"
             onClick={() => setMenu("mobile-app")}
             className={menu === "mobile-app" ? "active" : ""}
           >
-            Mobile-app
+            <li>Mobile-app</li>
           </a>
           <a href="#footer"
             onClick={() => setMenu("contact-us")}
             className={menu === "contact-us" ? "active" : ""}
           >
-            Contact
+            <li>Contact</li>
           </a>
         </ul>
         <div className="navbar-right">
           <img src={assets.search_icon} alt="" />
           <div className="navbar-search-icon">
-            <img src={assets.basket_icon} alt="" />
-            <div className="dot"></div>
+            <Link to='/cart'>
+              <img src={assets.basket_icon} alt="" />
+            </Link>
+            {
+              getTotalCart() === 0 ? "": (
+                <div className="dot">
+                  <p>{getTotalCart()}</p>
+                </div>
+              )
+            }
           </div>
           <button onClick={handleSignIn}>Sign In</button>
         </div>
@@ -58,10 +71,12 @@ const Navbar = ({setShowLogin}) => {
 
 const Wrapper = styled.section`
   .navbar {
-    padding: 20px 0px;
+    padding: 20px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: url("/wood.avif");
+    background-size: contain;
   }
 
   .navbar .logo {
@@ -70,6 +85,11 @@ const Wrapper = styled.section`
     background: linear-gradient(45deg, #ff8a00, #e52e71);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    transition: 0.3s;
+  }
+
+  .navbar .logo:hover {
+    transform: scale(1.2);
   }
 /* 
   .logo img {
@@ -117,8 +137,14 @@ const Wrapper = styled.section`
     transform: scale(1.1);
   }
 
-  .navbar li {
+  .navbar-menu li {
+    transition: 0.3s;
+  }
+
+  .navbar-menu li:hover {
     cursor: pointer;
+    transform: scale(1.2);
+    color: lightcoral;
   }
 
   .navbar-search-icon {
@@ -130,9 +156,15 @@ const Wrapper = styled.section`
     min-width: 10px;
     min-height: 10px;
     background-color: lightcoral;
-    border-radius: 5px;
-    top: -8px;
-    right: -8px;
+    border-radius: 50%;
+    padding: 0px 4px;
+    top: -4px;
+    right: -4px;
+    text-align: center;
+  }
+
+  .navbar-search-icon .dot p {
+    font-size: 16px;
   }
 
   @media (max-width: 1050px) {
@@ -172,11 +204,42 @@ const Wrapper = styled.section`
       padding: 7px 20px;
       font-size: 15px;
     }
+    .navbar-search-icon .dot {
+      position: absolute;
+      min-width: 10px;
+      min-height: 10px;
+      background-color: lightcoral;
+      border-radius: 50%;
+      padding:1px 3px;
+      top: -4px;
+      right: -4px;
+      text-align: center;
+    }
+    .navbar-search-icon .dot p {
+      font-size: 11px;
+    }
   }
 
   @media (max-width: 750px) {
     .navbar-menu {
       display: none;
+    }
+    .navbar .logo {
+      font-size: 4.5vw;
+    }
+    .navbar-search-icon .dot {
+      position: absolute;
+      min-width: 10px;
+      min-height: 10px;
+      background-color: lightcoral;
+      border-radius: 50%;
+      padding: 1px 2px;
+      top: -2px;
+      right: -4px;
+      text-align: center;
+    }
+    .navbar-search-icon .dot p {
+      font-size: 9px;
     }
   }
 `;

@@ -63,6 +63,7 @@ import bag_icon from './bag_icon.png'
 import logout_icon from './logout_icon.png'
 import parcel_icon from './parcel_icon.png'
 import stars from './stars.avif'
+import dark_wood from './dark_wood.jpg'
 
 export const assets = {
     logo,
@@ -70,6 +71,7 @@ export const assets = {
     logo2,
     logo3,
     stars,
+    dark_wood,
     basket_icon,
     header_img,
     search_icon,

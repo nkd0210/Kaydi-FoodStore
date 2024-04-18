@@ -15,13 +15,13 @@ const App = () => {
   return (
     <Wrapper>
       {/* {showLogin ? <Login/> :<></>} */}
+      <Navbar setShowLogin={setShowLogin} />
       <div className="app">
-        <Navbar setShowLogin={setShowLogin} />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/order' element={<PlaceOrder />} />
-          <Route path='/signin' element={<Login setShowLogin={setShowLogin} />}/>
+          <Route path='/signin' element={<Login setShowLogin={setShowLogin} />} />
 
         </Routes>
       </div>

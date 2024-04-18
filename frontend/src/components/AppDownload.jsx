@@ -10,7 +10,7 @@ const AppDownload = () => {
   return (
     <Wrapper>
       <div className="app-download" id="app-download">
-        <p>
+        <p className="download-title">
           For Better Experience Download <br /> Our App
         </p>
         <div className="app-download-platforms">
@@ -29,13 +29,17 @@ const Wrapper = styled.section`
     font-size: max(3vw, 20px);
     text-align: center;
     font-weight: 500;
-    background-color: #8c888c;
+    /* background-color: #8c888c; */
+    background: url("wood.avif");
+    background-size: contain;
     border-radius: 15px;
     padding: 30px 0px;
     box-shadow: 0px 0px 10px #888;
 
   }
-
+  .download-title {
+    color: #999;
+  }
   .app-download-platforms {
     display: flex;
     justify-content: center;

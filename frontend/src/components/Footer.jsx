@@ -24,7 +24,9 @@ const Footer = () => {
           <div className="footer-content-center">
             <h2>COMPANY</h2>
             <ul>
-              <li>Home</li>
+              <li>
+                <a href="#header">Home</a>        
+              </li>
               <li>About Us</li>
               <li>Delivery</li>
               <li>Privacy&Policy</li>
@@ -51,7 +53,9 @@ const Footer = () => {
 const Wrapper = styled.section`
   .footer {
     color: #d9d9d9;
-    background-color: #333841;
+    /* background-color: #333841; */
+    background: url("/wood.avif");
+    background-size: contain;
     display: flex;
     flex-direction: column;
     align-items: center;

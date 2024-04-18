@@ -43,7 +43,9 @@ const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background-color: #8c888c;
+    /* background-color: #8c888c; */
+    background: url("/dark_wood.jpg");
+    background-size: contain;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 0px 10px #888;
@@ -51,14 +53,14 @@ const Wrapper = styled.section`
   }
 
   .explore-menu h1 {
-    color: #555;
+    color: #fff;
     font-weight: bold;
     font-size: 1.6rem;
     text-shadow: -1px 0 lightcoral, 0 1px lightcoral, 1px 0 lightcoral, 0 -1px lightcoral;
   }
 
   .explore-menu-text {
-    color: #333;
+    color: #fff;
     gap: 20px;
     max-width: 60%;
     columns: #808;
@@ -93,7 +95,7 @@ const Wrapper = styled.section`
   .explore-menu-list-item p {
     margin-top: 10px;
     margin-bottom: 10px;
-    color: #444;
+    color: #fff;
     font-size: max(1.4vw, 16px);
     cursor: pointer;
   }
