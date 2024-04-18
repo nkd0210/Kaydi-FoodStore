@@ -59,6 +59,8 @@ const Wrapper = styled.section`
     transition: 0.3s;
     animation: fadeIn 1s;
     background-color: #333841;
+    background: url("/gray_wood.jpg");
+    background-size: contain;
   }
 
   .food-item:hover {
@@ -73,9 +75,13 @@ const Wrapper = styled.section`
   .food-item-info {
     padding: 20px;
   }
+
   .food-name {
     color: #8A2BE2;
+    font-size: 1.3rem;
+    font-weight: 600;
   }
+
   .food-item-name-rating {
     display: flex;
     justify-content: space-between;
@@ -83,18 +89,14 @@ const Wrapper = styled.section`
     margin-bottom: 10px;
   }
 
-  .food-item-name-rating p {
-    font-size: 20px;
-    font-weight: 500;
-  }
-
   .food-item-name-rating img {
     width: 80px;
   }
 
   .food-item-desc {
-    color: #888;
-    font-size: 14px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
   }
 
   .food-item-price {

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { StoreContext } from "../context/StoreContext";
+import { Link, useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const handleFreeShip = () => {
@@ -13,6 +14,8 @@ const Cart = () => {
       totalValue.textContent = `$${getTotalCartAmount()}`;
     }
   };
+
+  const navigate = useNavigate();
 
   const { cartItems, food_list, removeFromCart, getTotalCartAmount } =
     useContext(StoreContext);
@@ -86,9 +89,11 @@ const Cart = () => {
               </b>
             </div>
           </div>
-          <button onClick={() => navigate("/order")}>
-            Proceed To Checkout
-          </button>
+          <Link to='/order'>
+            <button onClick={() => navigate("/order")}>
+              Proceed To Checkout
+            </button>
+          </Link>
         </div>
       </div>
     </Wrapper>
@@ -174,6 +179,7 @@ const Wrapper = styled.section`
     color: white;
     background-color: lightcoral;
     width: max(15vw, 200px);
+    /* width: 100%; */
     padding: 12px 0px;
     border-radius: 4px;
   }

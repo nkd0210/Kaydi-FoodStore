@@ -54,12 +54,12 @@ const Wrapper = styled.section`
     /* background-color: #333841; */
     background: url("/dark_wood.jpg");
     background-size: contain;
-    width: 100%;
+    width: 50%;
     height: 100%;
     border-radius: 15px;
     box-shadow: 0px 0px 10px #555;
     padding: 20px 30px;
-    margin-top: 100px;
+    margin: 100px auto 0px;
   }
   .login-popup-container {
     display: flex;
@@ -124,6 +124,12 @@ const Wrapper = styled.section`
   }
   .register-btn {
     color: #fff;
+  }
+
+  @media (max-width: 990px) {
+    .login-popup {
+      width: 100%;
+    }
   }
 
 `;

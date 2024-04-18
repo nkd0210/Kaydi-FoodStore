@@ -1,12 +1,18 @@
 import React from "react";
 import styled from "styled-components";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
+
+  const navigate = useNavigate();
+
   return (
     <Wrapper>
       <div className="header" id="header">
         <div className="header-contents">
-          <button>View Menu</button>
+          <a href="#food-display">
+            <button>View Menu</button>
+          </a>
         </div>
       </div>
     </Wrapper>
