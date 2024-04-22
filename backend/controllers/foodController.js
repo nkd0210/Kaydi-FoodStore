@@ -16,10 +16,17 @@ const addFood = async(req,res) => {
 
     try {
         const newFood = await food.save();
-        res.status(201).json({message: "Add food successfully", data: newFood});
+        res.status(201).json({
+            success: true,
+            message: "Add food successfully", 
+            data: newFood
+        });
     } catch (error) {
         res.status(400)
-        .json({message: "Add food failed"})
+        .json({
+            success: false,
+            message: "Add food failed"
+        })
     }
 }
 
@@ -30,9 +37,16 @@ const listFood = async(req,res) => {
         const foods = await foodModel.find({});
         res
             .status(200)
-            .json({message: "Get all food successfully", data: foods})
+            .json({
+                success: true,
+                message: "Get all food successfully", 
+                data: foods
+            })
     } catch (error) {
-        res.status(400).json({message: "Get all food failed"})
+        res.status(400).json({
+            success: false,
+            message: "Get all food failed"
+        })
     }
 }
 
@@ -44,9 +58,15 @@ const removeFood = async(req,res) => {
         fs.unlink(`uploads/${food.image}`,() => {})
 
         await foodModel.findByIdAndDelete(req.params.foodId);
-        res.status(200).json({message: "Delete food successfully"})
+        res.status(200).json({
+            success: true,
+            message: "Delete food successfully"
+        })
     } catch (error) {
-        res.status(400).json({message: "Delete food failed"})
+        res.status(400).json({
+            success: false,
+            message: "Delete food failed"
+        })
     }
 }
 
