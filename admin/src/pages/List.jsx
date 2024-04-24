@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import styled from 'styled-components'
 
-const List = () => {
+const List = ({url}) => {
 
-    const url = "http://localhost:5000";
     const[list, setList] = useState([])
 
     const fetchList = async() => {
@@ -33,6 +32,7 @@ const List = () => {
 
   return (
     <Wrapper>
+        <div className="list-body">
         <h1>All Foods List</h1>
         <div className="list-table">
             <div className="list-table-format title">
@@ -54,15 +54,23 @@ const List = () => {
                 )
             })}
         </div>
+        </div>
+        
     </Wrapper>
   )
 }
 const Wrapper = styled.section`
+
     h1 {
         text-align: center;
         padding: 20px 0px;
         color: lightcoral;
         font-size: 1.4rem;
+    }
+    .list-table {
+        max-height: 700px;
+        overflow: scroll;
+
     }
     .list-table-format {
         display: grid;

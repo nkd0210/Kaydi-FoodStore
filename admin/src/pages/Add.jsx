@@ -4,9 +4,8 @@ import { assets } from '../assets/assets'
 import axios from 'axios'
 import { toast } from 'react-toastify';
 
-const Add = () => {
+const Add = ({url}) => {
   
-    const url = "http://localhost:5000";
     const [image, setImage] = useState(false);
     const [data, setData] = useState({
         name: "",
@@ -42,7 +41,7 @@ const Add = () => {
                 category: "Salad"
             })
             setImage(false);
-            toast.success("Add product successed ")
+            toast.success("Add product succeed ")
         }else {
             toast.error("Add product failed")
         }
