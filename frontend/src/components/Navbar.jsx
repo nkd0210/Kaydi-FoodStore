@@ -4,6 +4,9 @@ import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { StoreContext } from "../context/StoreContext";
+import { CiShoppingCart } from "react-icons/ci";
+import { IoMdLogOut } from "react-icons/io";
+import { FaShoppingBasket } from "react-icons/fa";
 
 const Navbar = ({setShowLogin}) => {
   const [menu, setMenu] = useState("home");
@@ -14,8 +17,19 @@ const Navbar = ({setShowLogin}) => {
     setShowLogin(true);
   }
 
-  const {getTotalCartAmount, getTotalCart} = useContext(StoreContext);
+  const handleSignOut = () => {
+    localStorage.removeItem("token");
+    setToken("");
+    navigate("/");
+  }
+
+  const handleDropdownBtn = () => {
+    document.querySelector(".nav-profile-dropdown").classList.toggle("show");
+  }
+
+  const {getTotalCartAmount, getTotalCart, token, setToken} = useContext(StoreContext);
   // console.log(getTotalCart());
+  // console.log(token)
   return (
     <Wrapper>
       <div className="navbar">
@@ -62,7 +76,27 @@ const Navbar = ({setShowLogin}) => {
               )
             }
           </div>
-          <button onClick={handleSignIn}>Sign In</button>
+          {
+            !token ? (
+                <button onClick={handleSignIn}>Sign In</button>
+            ): (
+              <div onClick={handleDropdownBtn} className="navbar-profile">
+                <img src={assets.profile_icon} alt="" />
+                <ul className="nav-profile-dropdown">
+                  <li >
+                    <FaShoppingBasket className="dropdown-item-icon" />
+                    <p>Orders</p>
+                  </li>
+                  <hr />
+                  <li onClick={handleSignOut} >
+                    <IoMdLogOut className="dropdown-item-icon" />
+                    <p>Logout</p>
+                  </li>
+                </ul>
+              </div>
+            )
+          }
+          
         </div>
       </div>
     </Wrapper>
@@ -166,6 +200,46 @@ const Wrapper = styled.section`
   .navbar-search-icon .dot p {
     font-size: 16px;
   }
+
+  .navbar-profile {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .nav-profile-dropdown {
+    position: absolute;
+    display: none;
+    right: 0;
+    z-index: 1;
+  }
+
+  .nav-profile-dropdown.show {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: 1px solid lightcoral;
+    background-color: #6e6b6e;
+    list-style: none;
+  }
+  .nav-profile-dropdown.show li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+  .dropdown-item-icon {
+    font-size: 20px;
+  }
+  .nav-profile-dropdown.show li:hover {
+    color: lightcoral;
+  }
+  .nav-profile-dropdown.show li p {
+    font-size: 1rem;
+  }
+  
+  
 
   @media (max-width: 1050px) {
     .navbar-logo {

@@ -1,16 +1,65 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
+import { StoreContext } from "../context/StoreContext";
+import axios from 'axios';
 
 const Login = ({ setShowLogin }) => {
-  const [currState, setCurrState] = useState("Sign Up");
+
+  const { url, setToken } = useContext(StoreContext);
+
+  const [currState, setCurrState] = useState("Login");
   const navigate = useNavigate();
+
+  const [data, setData] = useState({
+    name: "",
+    email: "",
+    password: ""
+  })
+
+  const onChangeHandler = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setData(data => ({
+      ...data,
+      [name]: value
+    }));
+  }
+
+  const onLogin = async (e) => {
+    e.preventDefault();
+    let newUrl = url;
+    if (currState === "Login") {
+      newUrl += '/api/user/login';
+      const response = await axios.post(newUrl, data);
+
+      if (response.data.success) {
+        setToken(response.data.token);
+        localStorage.setItem("token", response.data.token);
+        navigate('/');
+      } else {
+        alert(response.data.message);
+      }
+    } else {
+      newUrl += '/api/user/register';
+      const response = await axios.post(newUrl, data);
+
+      if (response.data.success) {
+        setToken(response.data.token);
+        localStorage.setItem("token", response.data.token);
+        setCurrState("Login")
+      } else {
+        alert(response.data.message);
+      }
+    }
+
+  }
 
   return (
     <Wrapper>
       <div className="login-popup">
-        <form className="login-popup-container">
+        <form onSubmit={onLogin} className="login-popup-container">
           <div className="login-popup-title">
             <h2>{currState}</h2>
             <img onClick={() => navigate("/")} src={assets.cross_icon} alt="" />
@@ -19,16 +68,16 @@ const Login = ({ setShowLogin }) => {
             {currState === "Login" ? (
               <></>
             ) : (
-              <input type="text" placeholder="Enter Name" required />
+              <input name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder="Enter Name" required />
             )}
-            <input type="text" placeholder="Enter Email" required />
-            <input type="password" placeholder="Enter Password" required />
+            <input name='email' onChange={onChangeHandler} value={data.email} type="text" placeholder="Enter Email" required />
+            <input name='password' onChange={onChangeHandler} value={data.password} type="password" placeholder="Enter Password" required />
           </div>
           <div className="login-popup-condition">
             <input type="checkbox" required />
             <p>By continuing, I agree to the terms of use & privacy policy.</p>
           </div>
-          <button>
+          <button type='submit'>
             {currState === "Sign Up" ? "Create Account" : "Login"}
           </button>
 
