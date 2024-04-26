@@ -7,14 +7,15 @@ import { StoreContext } from "../context/StoreContext";
 import { CiShoppingCart } from "react-icons/ci";
 import { IoMdLogOut } from "react-icons/io";
 import { FaShoppingBasket } from "react-icons/fa";
-
-const Navbar = ({setShowLogin}) => {
+import { SlBasketLoaded } from "react-icons/sl";
+import { FaCircleUser } from "react-icons/fa6";
+const Navbar = () => {
   const [menu, setMenu] = useState("home");
   const navigate = useNavigate();
 
   const handleSignIn = () => {
     navigate("/signin");
-    setShowLogin(true);
+    // setShowLogin(true);
   }
 
   const handleSignOut = () => {
@@ -63,10 +64,9 @@ const Navbar = ({setShowLogin}) => {
           </a>
         </ul>
         <div className="navbar-right">
-          <img src={assets.search_icon} alt="" />
           <div className="navbar-search-icon">
             <Link to='/cart'>
-              <img src={assets.basket_icon} alt="" />
+              <SlBasketLoaded className="basket-icon" />
             </Link>
             {
               getTotalCart() === 0 ? "": (
@@ -81,12 +81,15 @@ const Navbar = ({setShowLogin}) => {
                 <button onClick={handleSignIn}>Sign In</button>
             ): (
               <div onClick={handleDropdownBtn} className="navbar-profile">
-                <img src={assets.profile_icon} alt="" />
+                <FaCircleUser className="user-icon" />
                 <ul className="nav-profile-dropdown">
-                  <li >
-                    <FaShoppingBasket className="dropdown-item-icon" />
-                    <p>Orders</p>
-                  </li>
+                  <Link to='/myorders'>
+                    <li >
+                      <FaShoppingBasket className="dropdown-item-icon" />
+                      <p>Orders</p>
+                    </li>
+                  
+                  </Link>
                   <hr />
                   <li onClick={handleSignOut} >
                     <IoMdLogOut className="dropdown-item-icon" />
@@ -125,14 +128,7 @@ const Wrapper = styled.section`
   .navbar .logo:hover {
     transform: scale(1.2);
   }
-/* 
-  .logo img {
-    max-width: 150px;
-    max-height: 50px;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  } */
+
   .navbar-menu {
     display: flex;
     list-style: none;
@@ -238,7 +234,20 @@ const Wrapper = styled.section`
   .nav-profile-dropdown.show li p {
     font-size: 1rem;
   }
-  
+  .basket-icon {
+    font-size: 26px;
+    color: gray;
+  }
+  .basket-icon:hover {
+    color: lightcoral;
+  }
+  .user-icon {
+    font-size: 26px;
+    color: gray;
+  }
+  .user-icon:hover {
+    color: lightcoral;
+  }
   
 
   @media (max-width: 1050px) {

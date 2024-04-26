@@ -8,6 +8,7 @@ import Add from './pages/Add'
 import Orders from './pages/Orders'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import HomeManager from './pages/HomeManager'
 
 const App = () => {
 
@@ -22,6 +23,7 @@ const App = () => {
         <Sidebar />
         <div className="router">
         <Routes>
+          <Route index element={<HomeManager url={url}/>} />
           <Route path='/add' element={<Add url={url}/>} />
           <Route path='/list' element={<List url={url}/>} />
           <Route path='/orders' element={<Orders url={url}/>} />

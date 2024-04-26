@@ -8,6 +8,7 @@ import { Route, Routes } from 'react-router-dom'
 import Footer from './components/Footer';
 import Login from './pages/Login';
 import Verify from './pages/Verify';
+import MyOrders from './pages/MyOrders';
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
           <Route path='/order' element={<PlaceOrder />} />
           <Route path='/signin' element={<Login/>} />
           <Route path='/verify' element={<Verify/>}/>
+          <Route path='/myorders' element={<MyOrders/>}/>
         </Routes>
       </div>
       <Footer />
