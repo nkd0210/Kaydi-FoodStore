@@ -7,6 +7,7 @@ import PlaceOrder from './pages/PlaceOrder';
 import { Route, Routes } from 'react-router-dom'
 import Footer from './components/Footer';
 import Login from './pages/Login';
+import Verify from './pages/Verify';
 
 
 const App = () => {
@@ -15,14 +16,14 @@ const App = () => {
   return (
     <Wrapper>
       {/* {showLogin ? <Login/> :<></>} */}
-      <Navbar setShowLogin={setShowLogin} />
+      <Navbar />
       <div className="app">
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/order' element={<PlaceOrder />} />
-          <Route path='/signin' element={<Login setShowLogin={setShowLogin} />} />
-
+          <Route path='/signin' element={<Login/>} />
+          <Route path='/verify' element={<Verify/>}/>
         </Routes>
       </div>
       <Footer />
